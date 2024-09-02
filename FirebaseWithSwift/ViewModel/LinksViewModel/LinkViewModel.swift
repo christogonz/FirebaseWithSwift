@@ -18,6 +18,7 @@ final class LinkViewModel: ObservableObject {
         self.linkRepository = linkRepository
     }
     
+    // MARK: Get all links
     func getAllLinks() {
         linkRepository.getAllLinks { [weak self] result in
             switch result {
@@ -29,6 +30,7 @@ final class LinkViewModel: ObservableObject {
         }
     }
     
+    // MARK: Create a new link
     func createNewLink(fromURL url: String) {
         linkRepository.createNewLink(withURL: url) { [weak self] result in
             switch result {
@@ -39,4 +41,33 @@ final class LinkViewModel: ObservableObject {
             }
         }
     }
+    
+    
+    //MARK: Update a link
+    func updateIsFavorited(link: LinkModel) {
+        let updateLink = LinkModel(id: link.id,
+                                   url: link.url,
+                                   title: link.title,
+                                   isFavorited: link.isFavorited ? false : true,
+                                   isCompleted: link.isCompleted)
+        
+        linkRepository.update(link: updateLink)
+    }
+    
+    //MARK: Update a link
+    func updateIsCompleted(link: LinkModel) {
+        let updateLink = LinkModel(id: link.id,
+                                   url: link.url,
+                                   title: link.title,
+                                   isFavorited: link.isFavorited,
+                                   isCompleted: link.isCompleted ? false : true)
+        
+        linkRepository.update(link: updateLink)
+    }
+    
+    // MARK: Detele Link
+    func detele(link: LinkModel) {
+        linkRepository.delete(link: link)
+    }
+    
 }

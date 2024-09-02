@@ -45,37 +45,61 @@ struct LinksView: View {
                     .foregroundStyle(.red.gradient)
             }
             
-            ScrollView {
+            
+            // MARK: Links List
+            List {
                 ForEach(linksViewModel.links) { link in
-                    Text(link.title)
-                        .bold()
-                        .lineLimit(4)
-                        .padding(.bottom, 8)
-                    Text(link.url)
-                        .foregroundStyle(.gray)
-                        .font(.caption)
-                    HStack {
-                        Spacer()
-                        if link.isCompleted {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .foregroundStyle(.blue)
-                                .frame(width: 10, height: 10)
+                    VStack {
+                        Text(link.title)
+                            .bold()
+                            .lineLimit(4)
+                            .padding(.bottom, 8)
+                        Text(link.url)
+                            .foregroundStyle(.gray)
+                            .font(.caption)
+                        HStack {
+                            Spacer()
+                            if link.isCompleted {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .resizable()
+                                    .foregroundStyle(.blue)
+                                    .frame(width: 10, height: 10)
+                            }
+                            if link.isFavorited {
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .foregroundStyle(.yellow)
+                                    .frame(width: 10, height: 10)
+                            }
                         }
-                        if link.isFavorited {
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .foregroundStyle(.yellow)
-                                .frame(width: 10, height: 10)
-                        }
+                        Divider()
+                            .padding()
                     }
-                    Divider()
-                        .padding()
+                    .swipeActions(edge: .leading) {
+                        Button(action: {
+                            linksViewModel.updateIsFavorited(link: link)
+                        }, label: {
+                            Label("Favorite", systemImage: "star.fill")
+                        })
+                        .tint(.yellow)
+                        
+                        Button(action: {
+                            linksViewModel.updateIsCompleted(link: link)
+                        }, label: {
+                            Label("Completed", systemImage: "checkmark.circle.fill")
+                        })
+                        .tint(.blue)
+                    }
+                    .swipeActions(edge: .trailing) {
+                        Button(action: {
+                            linksViewModel.detele(link: link)
+                        }, label: {
+                            Label("Detele", systemImage: "trash.fill")
+                        })
+                        .tint(.red)
+                    }
                 }
             }
-            
-                
-//            }
         }
         .task {
             linksViewModel.getAllLinks()

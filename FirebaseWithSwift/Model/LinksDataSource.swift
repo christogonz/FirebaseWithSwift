@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
-import FirebaseFirestoreCombineSwift
+
 
 // MARK: Model
 struct LinkModel: Decodable, Identifiable, Encodable {
@@ -25,7 +25,7 @@ final class LinkDataSource {
     private let collection = "links"
     
     
-    // MARK: Get Data from Firebase ("links" Collection)
+    // MARK: [Get] Data from Firebase ("links" Collection)
     func getAllLinks(completionBlock: @escaping (Result<[LinkModel], Error>) -> Void) {
         // Get Data
         database.collection(collection)
@@ -49,6 +49,7 @@ final class LinkDataSource {
             }
     }
     
+    //MARK: [Create] new Link
     func createNew(link: LinkModel, completionBlock: @escaping (Result<LinkModel, Error>) -> Void) {
         
         do {
@@ -57,7 +58,26 @@ final class LinkDataSource {
         } catch {
             completionBlock(.failure(error))
         }
-        
-        
+    }
+    
+  
+    //MARK: [Update] Link
+    func update(link: LinkModel) {
+        guard let documentId = link.id else {
+            return
+        }
+        do {
+            _ = try database.collection(collection).document(documentId).setData(from: link)
+        } catch {
+            print("Error updating link in our database")
+        }
+    }
+    
+    //MARK: [Detele] Link
+    func detele(link: LinkModel) {
+        guard let documentId = link.id else {
+            return
+        }
+        database.collection(collection).document(documentId).delete()
     }
 }

@@ -29,6 +29,7 @@
 		C29F6E822C7C860100344EAA /* LinkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F6E812C7C860100344EAA /* LinkRepository.swift */; };
 		C29F6E842C7C864700344EAA /* LinksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F6E832C7C864700344EAA /* LinksDataSource.swift */; };
 		C29F6E862C7C8E6000344EAA /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F6E852C7C8E6000344EAA /* LinksView.swift */; };
+		C2CAE87B2C86198D00C210EE /* LinkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAE87A2C86198D00C210EE /* LinkItemView.swift */; };
 		C2EAF4C22C7E2C1600117575 /* MetadataDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAF4C12C7E2C1600117575 /* MetadataDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		C29F6E812C7C860100344EAA /* LinkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRepository.swift; sourceTree = "<group>"; };
 		C29F6E832C7C864700344EAA /* LinksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDataSource.swift; sourceTree = "<group>"; };
 		C29F6E852C7C8E6000344EAA /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
+		C2CAE87A2C86198D00C210EE /* LinkItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemView.swift; sourceTree = "<group>"; };
 		C2EAF4C12C7E2C1600117575 /* MetadataDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 		C29F6E712C7511DC00344EAA /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				C2CAE8792C86196400C210EE /* Components */,
 				C29F6E722C7511EC00344EAA /* HomeView.swift */,
 				C29F6E852C7C8E6000344EAA /* LinksView.swift */,
 			);
@@ -195,6 +198,14 @@
 				C29F6E7F2C7C85E100344EAA /* LinkViewModel.swift */,
 			);
 			path = LinksViewModel;
+			sourceTree = "<group>";
+		};
+		C2CAE8792C86196400C210EE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAE87A2C86198D00C210EE /* LinkItemView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29F6E3B2C74E12200344EAA /* AuthView.swift in Sources */,
+				C2CAE87B2C86198D00C210EE /* LinkItemView.swift in Sources */,
 				C29F6E802C7C85E100344EAA /* LinkViewModel.swift in Sources */,
 				C29F6E642C74F8F200344EAA /* LoginEmailView.swift in Sources */,
 				C29F6E662C74FD0C00344EAA /* RegisterEmailView.swift in Sources */,
